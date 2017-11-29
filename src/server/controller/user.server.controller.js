@@ -46,9 +46,12 @@ exports.signIn = function(req, res) {
     });
   };
 
-  exports.getUser = function(req, res, next) {
-    return res.json({
-      message: "token valid"
+  exports.getAllUser = function(req, res, next) {
+    user.find({isAdmin: false}, function(err, users) {
+      if(err) throw err;
+      
+      return res.send(users);
+      
     });
   }
   

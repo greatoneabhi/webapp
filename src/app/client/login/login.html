@@ -11,19 +11,19 @@
                     <h4 style="font-family:cursive">LOGIN</h4>
                 </div>
                 <div class="panel-body">
-                    <form name="loginForm" ng-submit="submit(loginForm.$valid)" ng-controller="loginController" novalidate>
+                    <form name="loginForm" ng-submit="submit(loginForm.$valid)" ng-controller="loginController as loginCtrl" novalidate>
                         <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine}">
                             <label class="sr-only" for="email">Email Address:</label>
-                            <input class="form-control" ng-model="login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+                            <input class="form-control" ng-model="loginCtrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
                             <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email</p>
                         </div>
                         <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
                             <label class="sr-only" for="password">Passowrd:</label>
                             <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
-                            <input class="form-control" ng-model="login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
+                            <input class="form-control" ng-model="loginCtrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
                             <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
                         </div>
-                        <button type="submit" class="btn btn-warning btn-block" ng-disabled="loginForm.$invalid">Submit</button>
+                        <button class="btn btn-warning btn-block" ng-click="loginCtrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>
                         <div class="text-center">
                             <div class="checkbox">
                                 <label><input type="checkbox"> Remember me</label>
@@ -33,9 +33,9 @@
                             </div>
                             <a ui-sref="register">Sign Up</a>
                         </div>
-                        <div class="alert alert-danger alert-dismissable fade in" data-ng-show="loginFailed">
+                        <div class="alert alert-danger alert-dismissable fade in" data-ng-show="loginCtrl.loginFailed">
                                 <a href="#" class="close" data-ng-click="loginFailed = false" aria-label="close">&times;</a>
-                                <strong>{{errorMessage}}</strong>
+                                <strong>{{loginCtrl.errorMessage}}</strong>
                         </div>
                     </form>
                 </div>

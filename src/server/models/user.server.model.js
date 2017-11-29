@@ -3,6 +3,22 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+var addressSchema = new mongoose.Schema({
+  address: {
+      type: String
+  },
+  pincode: {
+    type: Number
+  },
+  city: {
+    type: String
+  },
+  state: {
+    type: String
+  }
+  
+});
+
 var userSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -23,13 +39,25 @@ var userSchema = new mongoose.Schema({
       type: String,
       trim: true
     },
-    created: {
+    profileCreationDateTime: {
       type: Date,
       default: Date.now
     },
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    billingAddress: addressSchema,
+    shippingAddress: [addressSchema],
+    loginDateTime: {
+      type: Date
+    },
+    loggoutDateTime: {
+      type: Date
+    },
+    token: {
+      type: String,
+      trim: true
     }
 });
 

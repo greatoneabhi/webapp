@@ -10,9 +10,9 @@ router.get('/', function(req, res) {
 router.post('/authenticate', user.signIn);
 router.post('/users', user.register);
 
-router.get('/users', isAuthenticated, user.getUser);
+router.get('/users', user.getAllUser);
 
-function isAuthenticated(req, res, next) {
+function isAuthenticatedUser(req, res, next) {
     console.log('verify token');
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
