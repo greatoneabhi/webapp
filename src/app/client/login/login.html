@@ -1,47 +1,46 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
-            <a ui-sref="app.home"><img class="img-responsive" src="images/logo_dark.png" alt="buyceps.com"></a>
-        </div>
+<div class="container" ng-controller="loginController as loginCtrl">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
+      <a ui-sref="app.home"><img class="img-responsive" src="images/logo_dark.png" alt="buyceps.com"></a>
     </div>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 style="font-family:cursive">LOGIN</h4>
-                </div>
-                <div class="panel-body">
-                    <form name="loginForm" ng-submit="submit(loginForm.$valid)" ng-controller="loginController as loginCtrl" novalidate>
-                        <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine}">
-                            <label class="sr-only" for="email">Email Address:</label>
-                            <input class="form-control" ng-model="loginCtrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
-                            <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email</p>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
-                            <label class="sr-only" for="password">Passowrd:</label>
-                            <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
-                            <input class="form-control" ng-model="loginCtrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
-                            <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
-                        </div>
-                        <button class="btn btn-warning btn-block" ng-click="loginCtrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>
-                        <div class="text-center">
-                            <div class="checkbox">
-                                <label><input type="checkbox"> Remember me</label>
-                            </div>  
-                            <div class="divider-line">
-                                <div class="divider-text">New User?</div>
-                            </div>
-                            <a ui-sref="register">Sign Up</a>
-                        </div>
-                        <div class="alert alert-danger alert-dismissable fade in" data-ng-show="loginCtrl.loginFailed">
-                                <a href="#" class="close" data-ng-click="loginFailed = false" aria-label="close">&times;</a>
-                                <strong>{{loginCtrl.errorMessage}}</strong>
-                        </div>
-                    </form>
-                </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
+      <div class="alert alert-{{loginCtrl.alert.type}} alert-dismissable fade in" data-ng-show="loginCtrl.alert">
+        <a class="close" data-ng-click="loginCtrl.alert = null" aria-label="close">&times;</a> {{loginCtrl.alert.msg}}
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 style="font-family:cursive">LOGIN</h4>
+        </div>
+        <div class="panel-body">
+          <form name="loginForm" ng-submit="submit(loginForm.$valid)" novalidate>
+            <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine}">
+              <label class="sr-only" for="email">Email Address:</label>
+              <input class="form-control" ng-model="loginCtrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+              <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email</p>
             </div>
+            <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
+              <label class="sr-only" for="password">Passowrd:</label>
+              <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
+              <input class="form-control" ng-model="loginCtrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
+              <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
+            </div>
+            <button class="btn btn-warning btn-block" ng-click="loginCtrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>
+            <div class="text-center">
+              <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+              </div>
+              <div class="divider-line">
+                <div class="divider-text">New User?</div>
+              </div>
+              <a ui-sref="register">Sign Up</a>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Forget password modal -->
@@ -50,7 +49,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Forgot Password?</h4>
+        <h4 class="modal-title">Forgot Password?</h4>
       </div>
       <div class="modal-body">
         <form name="">

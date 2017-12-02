@@ -23,11 +23,13 @@ angular.module('buycepsApp')
         
         .state('app.home', {
             url: '/home',
-            templateUrl: 'client/home/home.html'
+            templateUrl: 'client/home/home.html',
+            params: { 'token': null }
         })
       
         .state('admin', {
           url: '/admin',
-          templateUrl: 'admin/admin.html'
+          templateUrl: 'admin/admin.html',
+          params: { 'token' : null }
         });
 });

@@ -6,22 +6,26 @@
       console.log("loginController");
 
       var loginCtrl = this;
+      loginCtrl.alert = null;
 
       loginCtrl.submit = function() {
         console.log(loginCtrl.login);
-        $http.post('http://port-8080.buyceps-abhikrsingh05446337.codeanyapp.com/api/authenticate', loginCtrl.login)
+        $http.post('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/authenticate', loginCtrl.login)
           .then(function(response) {
-            console.log("login successfull");
             if (response.data.isAdmin) {
               $state.go('admin');
             } else {
-              $state.go('app.home');
+              $state.go('app.home', {
+                'token': response.data.token
+              });
             }
-          }).catch(function(data, status) {
-            console.log('Error: ', status, data);
-            loginCtrl.errorMessage = "Invalid email or password !"
-            loginCtrl.loginFailed = true;
+          }).catch(function(err) {
+            loginCtrl.alert = {
+              type: 'danger',
+              msg: err.data.message
+            };
           });
       };
+
     }]);
 })();

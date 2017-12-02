@@ -7,17 +7,22 @@
 
       var registerCtrl = this;
 
+      registerCtrl.alert = null;
+
       registerCtrl.submit = function() {
         console.log($scope.user);
         $http.post('http://port-8080.buyceps-abhikrsingh05446337.codeanyapp.com/api/users', registerCtrl.user)
           .then(function(response) {
             console.log("user created");
-            registerCtrl.successMsg = "Registration Successfull !";
-            registerCtrl.registerSuccess = true;
-          }).catch(function(response) {
-            console.log('Error: ', response);
-            registerCtrl.failedMessage = response.data;
-            registerCtrl.registerFailed = true;
+            registerCtrl.alert = {
+              type: 'success',
+              msg: 'Registration Successfull !'
+            }
+          }).catch(function(err) {
+            registerCtrl.alert = {
+              type: 'danger',
+              msg: err.data
+            };
           });
       };
     }]);

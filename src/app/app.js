@@ -1,1 +1,1 @@
-angular.module('buycepsApp', ['ui.router']);
+angular.module('buycepsApp', ['ui.router', 'ui.bootstrap']);
