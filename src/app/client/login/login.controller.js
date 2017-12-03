@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('buycepsApp')
-    .controller('loginController', ['$scope', '$http', '$state', function($scope, $http, $state) {
+    .controller('loginController', ['$scope', '$http', '$state', '$window', function($scope, $http, $state, $window) {
       console.log("loginController");
 
       var loginCtrl = this;
@@ -10,14 +10,13 @@
 
       loginCtrl.submit = function() {
         console.log(loginCtrl.login);
-        $http.post('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/authenticate', loginCtrl.login)
+        $http.post('http://localhost:8081/api/authenticate', loginCtrl.login)
           .then(function(response) {
             if (response.data.isAdmin) {
               $state.go('admin');
             } else {
-              $state.go('app.home', {
-                'token': response.data.token
-              });
+              $window.localStorage.setItem('auth_token', response.data.token);
+              $state.go('app.home');
             }
           }).catch(function(err) {
             loginCtrl.alert = {

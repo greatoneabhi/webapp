@@ -12,7 +12,8 @@ module.exports = function(gulp, conf, path) {
         .pipe(gulp.dest(path.join(conf.paths.build, '/scripts')));
       
       gulp.src([
-        path.join(conf.paths.modules, 'bootstrap/fonts/**')
+        path.join(conf.paths.modules, 'bootstrap/fonts/**'),
+        path.join(conf.paths.modules, 'font-awesome/fonts/**')
       ])
       .pipe(gulp.dest(path.join(conf.paths.build, '/fonts')));
     };

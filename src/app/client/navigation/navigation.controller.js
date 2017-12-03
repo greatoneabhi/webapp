@@ -2,15 +2,15 @@
   'use strict';
 
   angular.module('buycepsApp')
-    .controller('navigationController', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+    .controller('navigationController', ['$scope', '$http', '$state', '$window', function($scope, $http, $state, $window) {
       console.log('navigation controller');
       var navigationCtrl = this;
-      var token = $stateParams.token;
+      var token = $window.localStorage.getItem('auth_token');
       
-      navigationCtrl.isLoggedIn = true;
+      navigationCtrl.isLoggedIn = false;
       console.log("token is: " + token);
       if (token) {
-        $http.get('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/user', {
+        $http.get('http://localhost:8081/api/user', {
             headers: {
               'x-access-token': token
             }
@@ -27,5 +27,10 @@
         navigationCtrl.isLoggedIn = false;
         console.log(navigationCtrl.isLoggedIn);
       }
+
+      navigationCtrl.logOut = function() {
+        $window.localStorage.setItem('auth_token', '');
+      }
     }]);
+
 })();

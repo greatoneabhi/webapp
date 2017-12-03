@@ -1,8 +1,7 @@
 angular.module('buycepsApp')
 .config(function($stateProvider, $urlRouterProvider) {
-    console.log("Routing");
-
-    $urlRouterProvider.otherwise('/login');
+    
+    $urlRouterProvider.otherwise('app/home');
 
     $stateProvider
 
@@ -23,13 +22,11 @@ angular.module('buycepsApp')
         
         .state('app.home', {
             url: '/home',
-            templateUrl: 'client/home/home.html',
-            params: { 'token': null }
+            templateUrl: 'client/home/home.html'
         })
       
         .state('admin', {
           url: '/admin',
-          templateUrl: 'admin/admin.html',
-          params: { 'token' : null }
+          templateUrl: 'admin/admin.html'
         });
 });

@@ -1,4 +1,5 @@
 @import '../../../node_modules/bootstrap/less/bootstrap.less';
+@import '../../../node_modules/font-awesome/less/font-awesome.less';
 
 .navbar {
   border-radius: 0px
@@ -10,9 +11,16 @@
     background-color: #333;
 }
 
-.navbar-nav .user-image {
+.navbar-nav .profile-image {
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;    
+}
+
+.navbar-nav .user-image {
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin: 0 auto;    
 }
@@ -201,19 +209,19 @@ a[data-toggle="collapse"] {
 }
 
 a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
+    //content: '\e259';
     display: block;
     position: absolute;
     right: 20px;
-    font-family: 'Glyphicons Halflings';
+    //font-family: 'Glyphicons Halflings';
     font-size: 0.6em;
 }
-a[aria-expanded="true"]::before {
+/*a[aria-expanded="true"]::before {
     content: '\e260';
-}
+}*/
 
 
-ul ul a {
+#admin ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #333;
