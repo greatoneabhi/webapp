@@ -35,10 +35,15 @@ exports.signIn = function(req, res) {
       id: user._id,
       isAdmin: user.isAdmin
     };
-
+    
     var token = jwt.sign(payload, 'buycepsdotcomsecret', {
-      expiresIn: 1440,
+      expiresIn: '6h',
     });
+
+    if(req.body.rememberMe) {
+      token = jwt.sign(payload, 'buycepsdotcomsecret');
+    }
+   
     return res.json({
       success: true,
       message: 'auth token',

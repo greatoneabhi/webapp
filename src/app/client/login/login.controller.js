@@ -7,10 +7,10 @@
 
       var loginCtrl = this;
       loginCtrl.alert = null;
-
+      
       loginCtrl.submit = function() {
         console.log(loginCtrl.login);
-        $http.post('http://localhost:8081/api/authenticate', loginCtrl.login)
+        $http.post('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/authenticate', loginCtrl.login)
           .then(function(response) {
             if (response.data.isAdmin) {
               $state.go('admin');

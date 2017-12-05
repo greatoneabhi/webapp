@@ -10,7 +10,7 @@
       navigationCtrl.isLoggedIn = false;
       console.log("token is: " + token);
       if (token) {
-        $http.get('http://localhost:8081/api/user', {
+        $http.get('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/user', {
             headers: {
               'x-access-token': token
             }

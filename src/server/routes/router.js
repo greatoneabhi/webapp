@@ -13,16 +13,17 @@ router.post('/users', user.register);
 router.get('/user', isAuthenticatedUser, user.getUser);
 
 function isAuthenticatedUser(req, res, next) {
-  console.log('verify token');
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
   if (token) {
     jwt.verify(token, 'buycepsdotcomsecret', function(err, decoded) {
       if (err) {
-        return res.json({
+        console.log(err);
+        return res.status(401).send({
           message: 'unauthorized !'
         });
       } else {
+        console.log(decoded);
         req.decoded = decoded;
         next();
       }

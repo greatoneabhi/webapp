@@ -39,10 +39,6 @@ var userSchema = new mongoose.Schema({
       type: String,
       trim: true
     },
-    profileCreationDateTime: {
-      type: Date,
-      default: Date.now
-    },
     isAdmin: {
       type: Boolean,
       default: false
@@ -54,10 +50,6 @@ var userSchema = new mongoose.Schema({
     },
     loggoutDateTime: {
       type: Date
-    },
-    token: {
-      type: String,
-      trim: true
     }
 });
 
