@@ -53,10 +53,9 @@ exports.signIn = function(req, res) {
   });
 };
 
-exports.getAllUser = function(req, res, next) {
-  user.find({
-    isAdmin: false
-  }, function(err, users) {
+exports.getAllUsers = function(req, res, next) {
+  console.log("get all users");
+  user.find({}, function(err, users) {
     if (err) throw err;
     return res.send(users);
   });

@@ -1,1 +1,2 @@
-angular.module('buycepsApp', ['ui.router', 'ui.bootstrap']);
+angular.module('buycepsApp', ['ui.router', 'ui.bootstrap', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.selection', 'ui.grid.pinning',
+                             'ui.grid.exporter', 'ui.grid.autoResize', 'ui.grid.emptyBaseLayer']);

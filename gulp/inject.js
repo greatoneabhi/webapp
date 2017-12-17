@@ -11,7 +11,8 @@ module.exports = function(gulp, conf, path, inject) {
             path.join(conf.paths.build, 'scripts/**/bootstrap.min.js'),
             path.join(conf.paths.build, 'scripts/**/angular.min.js'),
             path.join(conf.paths.build, 'scripts/**/angular-*.min.js'),
-            path.join(conf.paths.build, 'scripts/**/ui-bootstrap.js')
+            path.join(conf.paths.build, 'scripts/**/ui-bootstrap.js'),
+            path.join(conf.paths.build, 'scripts/**/ui-grid.min.js')
         ]);
         
         var injectStyleOptions = {

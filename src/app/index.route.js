@@ -27,6 +27,17 @@ angular.module('buycepsApp')
       
         .state('admin', {
           url: '/admin',
-          templateUrl: 'admin/admin.html'
+          templateUrl: 'admin/navigation/admin.html'
+        })
+  
+        .state('admin.users', {
+          url: '/users',
+          templateUrl: 'admin/users/users.html'
+        })
+  
+        .state('admin.home', {
+          url: '/home',
+          templateUrl: 'admin/home/home.html'
         });
-});
+})
+.run();

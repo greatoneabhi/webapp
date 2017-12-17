@@ -1,7 +1,8 @@
 var express = require('express');
-var user = require('../controller/user.server.controller');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
+var user = require('../controller/user.server.controller');
+var product = require('../controller/product.server.controller');
 
 router.get('/', function(req, res) {
   res.send('Server is running');
@@ -11,6 +12,7 @@ router.post('/authenticate', user.signIn);
 router.post('/users', user.register);
 
 router.get('/user', isAuthenticatedUser, user.getUser);
+router.get('/users', user.getAllUsers);
 
 function isAuthenticatedUser(req, res, next) {
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
