@@ -2,35 +2,34 @@
   'use strict';
 
   angular.module('buycepsApp')
-    .controller('navigationController', ['$scope', '$http', '$state', '$window', function($scope, $http, $state, $window) {
-      console.log('navigation controller');
-      var navigationCtrl = this;
-      var token = $window.localStorage.getItem('auth_token');
-      
-      navigationCtrl.isLoggedIn = false;
-      console.log("token is: " + token);
-      if (token) {
-        $http.get('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/user', {
-            headers: {
-              'x-access-token': token
-            }
-          })
-          .then(function(response) {
-            navigationCtrl.isLoggedIn = true;
-            navigationCtrl.name = response.data.name;
-            navigationCtrl.email = response.data.email;
-            console.log(response.data);
-          }).catch(function(data, status) {
-            console.log('Error: ', status, data);
-          });
-      } else {
-        navigationCtrl.isLoggedIn = false;
-        console.log(navigationCtrl.isLoggedIn);
-      }
+    .controller('navigationController', navigationController);
 
-      navigationCtrl.logOut = function() {
-        $window.localStorage.setItem('auth_token', '');
-      }
-    }]);
+  navigationController.$inject = ['$rootScope', '$scope', '$http', '$state', '$window'];
+
+  function navigationController($rootScope, $scope, $http, $state, $window) {
+    console.log('navigation controller');
+    var navigationCtrl = this;
+
+    navigationCtrl.isLoggedIn = false;
+
+    $http.get('/api/user')
+      .then(function(response) {
+        navigationCtrl.isLoggedIn = true;
+        $rootScope.userDetails = response.data;
+        navigationCtrl.name = response.data.name;
+        navigationCtrl.email = response.data.email;
+        console.log(response.data);
+      }).catch(function(response) {
+        console.log('Error: ', response.data);
+        navigationCtrl.isLoggedIn = false;
+      });
+
+    navigationCtrl.logOut = function() {
+      $window.localStorage.setItem('auth_token', '');
+      $rootScope.userDetails = {};
+      $http.defaults.headers.common['x-access-token'] = null;
+    }
+  }
+
 
 })();

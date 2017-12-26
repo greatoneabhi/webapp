@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('buycepsApp')
-    .controller('usersController', ['$scope', '$http', function($scope, $http) {
+    .controller('usersController', ['$scope', '$http', '$state', '$window', function($scope, $http, $state, $window) {
 
       console.log('users controller');
 
@@ -70,18 +70,20 @@
           $scope.gridApi = gridApi;
         },
         data: data
-
       };
 
       console.log("Get all users");
-
-      $http.get('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/users')
-        .then(function(response) {
-          usersCtrl.gridOptions.data = response.data;
-        }).catch(function(err) {
-          console.log("Error while fetching user data");
-        });
-
+      var token = $window.localStorage.getItem('auth_token');
+      $http.get('/api/users', {
+        headers: {
+          'x-access-token': token
+        }
+      }).then(function(response) {
+        usersCtrl.gridOptions.data = response.data;
+      }).catch(function(error) {
+        console.log(error.data.message);
+        $state.go('login');
+      })
 
     }]);
 

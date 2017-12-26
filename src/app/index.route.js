@@ -7,22 +7,33 @@ angular.module('buycepsApp')
 
         .state('login', {
             url: '/login',
-            templateUrl: 'client/login/login.html'
+            templateUrl: 'client/login/login.html',
+            controller: 'loginController',
+            controllerAs: 'ctrl'
         })
 
         .state('register', {
             url: '/register',
-            templateUrl: 'client/register/register.html'
+            templateUrl: 'client/register/register.html',
+            controller: 'registerController',
+            controllerAs: 'ctrl'
         })
 
         .state('app', {
             url: '/app',
-            templateUrl: 'client/navigation/navigation.html'
+            templateUrl: 'client/navigation/navigation.html',
+            controller: 'navigationController',
+            controllerAs: 'ctrl'
         })
         
         .state('app.home', {
             url: '/home',
             templateUrl: 'client/home/home.html'
+        })
+  
+        .state('app.profile', {
+            url: '/profile',
+            templateUrl: 'client/profile/profile.html'
         })
       
         .state('admin', {
@@ -32,7 +43,9 @@ angular.module('buycepsApp')
   
         .state('admin.users', {
           url: '/users',
-          templateUrl: 'admin/users/users.html'
+          templateUrl: 'admin/users/users.html',
+          controller: 'usersController',
+          controllerAs: 'ctrl'
         })
   
         .state('admin.home', {
@@ -40,4 +53,7 @@ angular.module('buycepsApp')
           templateUrl: 'admin/home/home.html'
         });
 })
-.run();
+.run(function($http, $window) {
+  var token = $window.localStorage.getItem('auth_token');
+  $http.defaults.headers.common['x-access-token'] = token;
+});

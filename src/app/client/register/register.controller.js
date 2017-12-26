@@ -11,7 +11,7 @@
 
       registerCtrl.submit = function() {
         console.log($scope.user);
-        $http.post('http://port-8081.buyceps-abhikrsingh05446337.codeanyapp.com/api/users', registerCtrl.user)
+        $http.post('/api/users', registerCtrl.user)
           .then(function(response) {
             console.log("user created");
             registerCtrl.alert = {

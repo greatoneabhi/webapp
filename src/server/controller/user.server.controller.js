@@ -8,7 +8,6 @@ var user = mongoose.model('user');
 exports.register = function(req, res, next) {
   var newUser = new user(req.body);
   newUser.password = bcrypt.hashSync(req.body.password, 10);
-
   user.create(newUser).then(function(user) {
     user.password = undefined;
     res.send(user);
@@ -64,7 +63,7 @@ exports.getAllUsers = function(req, res, next) {
 exports.getUser = function(req, res, next) {
   user.findOne({
     _id: mongoose.Types.ObjectId(req.decoded.id)
-  }, function(err, user) {
+  }, {password:0}, function(err, user) {
     if (err) throw err;
     return res.send(user);
   });

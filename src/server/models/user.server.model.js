@@ -15,6 +15,9 @@ var addressSchema = new mongoose.Schema({
   },
   state: {
     type: String
+  },
+  country: {
+    type: String
   }
   
 });

@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4 class="panel-title text-center">Abhishek Kumar Singh</h4>
+            </div>
+        <div class="panel-body">
+          <img src="images/default_user_profile_image.png" class="profile-image img-responsive" alt="User Image" align="middle">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-8 col-sm-offset-1">
+      <form>
+        <div class="panel-group" id="">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse1">
+        Personal Details</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="sr-only">Full Name:</label>
+                    <input class="form-control" type="text" placeholder="Full Name">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Email ID:</label>
+                    <input class="form-control" type="text" placeholder="Email Address">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Mobile Number:</label>
+                    <input class="form-control" type="text" placeholder="Mobile Number">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse2">
+        Reset Password</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="sr-only">Password:</label>
+                    <input class="form-control" type="password" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Confirm Password:</label>
+                    <input class="form-control" type="password" placeholder="Confirm Password">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse3">
+        Biling Address</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="sr-only">Address:</label>
+                    <textarea class="form-control" row="3" type="text" placeholder="Address"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">City:</label>
+                    <input class="form-control" type="text" placeholder="City">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">State:</label>
+                    <input class="form-control" type="text" placeholder="State">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Pincode:</label>
+                    <input class="form-control" type="text" placeholder="Pincode">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Country:</label>
+                    <input class="form-control" type="text" placeholder="Country">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <button class="btn btn-warning" ng-click="ctrl.submit()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

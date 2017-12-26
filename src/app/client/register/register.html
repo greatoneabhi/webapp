@@ -1,4 +1,4 @@
-<div class="container" ng-controller="registerController as registerCtrl">
+<div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
       <a ui-sref="app.home"><img class="img-responsive" src="images/logo_dark.png" alt="buyceps.com"></a>
@@ -6,8 +6,8 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
-      <div class="alert alert-{{registerCtrl.alert.type}} alert-dismissable fade in" data-ng-show="registerCtrl.alert">
-        <a class="close" data-ng-click="registerCtrl.alert = null" aria-label="close">&times;</a> {{registerCtrl.alert.msg}}
+      <div class="alert alert-{{ctrl.alert.type}} alert-dismissable fade in" data-ng-show="ctrl.alert">
+        <a class="close" data-ng-click="ctrl.alert = null" aria-label="close">&times;</a> {{ctrl.alert.msg}}
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -17,25 +17,25 @@
           <form name="registerForm" ng-submit="submit(registerForm.$valid)" novalidate>
             <div class="form-group" ng-class="{'has-error':registerForm.name.$invalid && !registerForm.name.$pristine}">
               <label class="sr-only" for="name">Name:</label>
-              <input class="form-control" ng-model="registerCtrl.user.name" type="text" name="name" id="name" placeholder="Enter your Full Name" required>
+              <input class="form-control" ng-model="ctrl.user.name" type="text" name="name" id="name" placeholder="Enter your Full Name" required>
               <p ng-show="registerForm.name.$invalid && !registerForm.name.$pristine" class="help-block">Name is required</p>
             </div>
             <div class="form-group" ng-class="{'has-error':registerForm.email.$invalid && !registerForm.email.$pristine}">
               <label class="sr-only" for="email">Email Address:</label>
-              <input class="form-control" ng-model="registerCtrl.user.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+              <input class="form-control" ng-model="ctrl.user.email" type="email" name="email" id="email" placeholder="Enter Email" required>
               <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">Enter valid email address</p>
             </div>
             <div class="form-group" ng-class="{'has-error': registerForm.phone.$invalid && !registerForm.phone.$pristine}">
               <label class="sr-only" for="phone">Phone Number:</label>
-              <input class="form-control" ng-model="registerCtrl.user.phone" type="tel" name="phone" id="phone" ng-minlength="10" ng-maxlength="10" placeholder="Enter Phone Number">
+              <input class="form-control" ng-model="ctrl.user.phone" type="tel" name="phone" id="phone" ng-minlength="10" ng-maxlength="10" placeholder="Enter Phone Number">
               <p ng-show="registerForm.phone.$invalid && !registerForm.phone.$pristine"></p>
             </div>
             <div class="form-group" ng-class="{'has-error': registerForm.password.$invalid && !registerForm.password.$pristine}">
               <label class="sr-only" for="password">Passowrd:</label>
-              <input class="form-control" ng-model="registerCtrl.user.password" type="password" name="password" id="password" placeholder="Minimum 8 characters" ng-minlength="8" required>
+              <input class="form-control" ng-model="ctrl.user.password" type="password" name="password" id="password" placeholder="Minimum 8 characters" ng-minlength="8" required>
               <p ng-show="registerForm.password.$error.minlength" class="help-block">Password is too short</p>
             </div>
-            <button ng-click="registerCtrl.submit()" class="btn btn-warning btn-block" ng-disabled="registerForm.$invalid">Submit</button>
+            <button ng-click="ctrl.submit()" class="btn btn-warning btn-block" ng-disabled="registerForm.$invalid">Submit</button>
             <div class="text-center">
               <div class="divider-line">
                 <div class="divider-text">Already a User?</div>
