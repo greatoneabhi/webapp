@@ -5,7 +5,9 @@ const multer = require('multer');
 const user = require('../controller/user.server.controller');
 const product = require('../controller/product.server.controller');
 
-var upload = multer({ dest: 'src/app/uploads/'});
+var upload = multer({
+  dest: 'src/app/uploads/'
+});
 
 router.get('/', function(req, res) {
   res.send('Server is running');
@@ -51,7 +53,7 @@ function isAuthenticatedUser(req, res, next) {
 }
 
 function isAuthenticatedAdmin(req, res, next) {
-  
+
   //console.log("inside is admin method");
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -65,12 +67,12 @@ function isAuthenticatedAdmin(req, res, next) {
       } else {
         //console.log(decoded);
         req.decoded = decoded;
-        if(decoded.isAdmin) {
+        if (decoded.isAdmin) {
           next();
         } else {
-           return res.status(401).json({
-              message: 'unauthorized !'
-           });
+          return res.status(401).json({
+            message: 'unauthorized !'
+          });
         }
       }
     });

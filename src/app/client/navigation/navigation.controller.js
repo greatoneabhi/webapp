@@ -3,7 +3,6 @@
 
   angular.module('buycepsApp')
     .controller('navigationController', navigationController);
-
   navigationController.$inject = ['$scope', '$http', '$state', '$window', 'userService'];
 
   function navigationController($scope, $http, $state, $window, userService) {
@@ -29,5 +28,4 @@
       $http.defaults.headers.common['x-access-token'] = null;
     }
   }
-
 })();
