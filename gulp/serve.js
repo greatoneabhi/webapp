@@ -7,7 +7,11 @@ module.exports = function(gulp, conf, browserSync) {
 
             proxy: "localhost:8080",
             port: 8081,
-            serveStatic: ['./build', './src/app']
+            serveStatic: ['./build', './src/app'],
+            open: false,
+            ghostMode: {
+              links: false
+            }
         });
     };
 };

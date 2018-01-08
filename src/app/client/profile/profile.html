@@ -1,0 +1,174 @@
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h4 class="panel-title text-center">{{ctrl.user.name}}</h4>
+        </div>
+        <div class="panel-body">
+          <img id="profile-image" src="{{image_source}}" class="profile-image img-responsive" alt="User Image" align="middle">
+        </div>
+        <div class="text-center">
+          <i class="fa fa-camera fa-2x" data-toggle="modal" data-backdrop="static" data-target="#uploadModal" style="color: #ec971f; cursor: pointer"></i>
+        </div>
+        <!--div class="image-upload text-center">
+            <label for="file-input">
+              <i class="fa fa-camera fa-2x" style="color: #ec971f; cursor: pointer"></i>
+            </label>
+            <input id="file-input" type="file" name="avatar" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" />
+          </div-->
+      </div>
+    </div>
+    <form>
+      <div class="col-sm-8 col-sm-offset-1">
+        <div class="panel-group" id="">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse1">
+        Personal Details</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Full Name:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.name" placeholder="{{ctrl.user.name}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Email ID:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.email" placeholder="{{ctrl.user.email}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Mobile Number:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.phone" placeholder="{{ctrl.user.phone}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse2">
+        Reset Password</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Password:</label>
+                    <input class="form-control" type="password" ng-model="ctrl.user.password" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm Password:</label>
+                    <input class="form-control" type="password" placeholder="Confirm Password">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse3">
+        Billing Address</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Address:</label>
+                    <textarea class="form-control" row="3" type="text" ng-model="ctrl.user.billingAddress.address" placeholder="{{ctrl.user.billingAddress.address}}"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>City:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.billingAddress.city" placeholder="{{ctrl.user.billingAddress.city}}">
+                  </div>
+                  <div class="form-group">
+                    <label>State:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.billingAddress.state" placeholder="{{ctrl.user.billingAddress.state}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Pincode:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.billingAddress.pincode" placeholder="{{ctrl.user.billingAddress.pincode}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Country:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.billingAddress.country" placeholder="{{ctrl.user.billingAddress.country}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="" href="javascript:;" data-target="#collapse4">
+        Shipping Address</a>
+              </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Address:</label>
+                    <textarea class="form-control" row="3" type="text" ng-model="ctrl.user.shippingAddress.address" placeholder="{{ctrl.user.shippingAddress.address}}"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>City:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.shippingAddress.city" placeholder="{{ctrl.user.shippingAddress.city}}">
+                  </div>
+                  <div class="form-group">
+                    <label>State:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.shippingAddress.state" placeholder="{{ctrl.user.shippingAddress.state}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Pincode:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.shippingAddress.pincode" placeholder="{{ctrl.user.shippingAddress.pincode}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Country:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.user.shippingAddress.country" placeholder="{{ctrl.user.shippingAddress.country}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <button class="btn btn-warning" ng-click="ctrl.save()">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- upload image Model -->
+<div id="uploadModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Profile Picture</h4>
+      </div>
+      <form ref='uploadForm' id='uploadForm' encType="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="pid" value="{{ctrl.user._id}}" />
+          <img id="profile-image" src="{{image_source}}" class="img-responsive" alt="User Image" style="height:50%; width:50%; margin:0 auto">
+          <label class="btn btn-default btn-file">
+          Browse<input type="file" name="avatar" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" style="display: none"/>
+        </label>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default btn-primary" data-dismiss="modal" ng-click="upload()" type="submit">Upload</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End upload end modal -->

@@ -19,11 +19,11 @@ gulp.task('copy-scripts', ['styles'], require('./gulp/copy-scripts')(gulp, conf,
 
 gulp.task('inject', ['copy-scripts'], require('./gulp/inject')(gulp, conf, path, inject));
 
-gulp.task('nodemon', require('./gulp/nodemon')(gulp, browserSync));
+gulp.task('nodemon', ['inject'], require('./gulp/nodemon')(gulp, browserSync));
 
 gulp.task('serve', ['inject', 'nodemon'], require('./gulp/serve')(gulp, conf, browserSync));
 
-gulp.task('default', ['serve'], function() {
+gulp.task('default', ['nodemon'], function() {
     gulp.watch('src/**/*.js', ['inject']);
     gulp.watch('src/**/*.html', ['inject']);
     gulp.watch('build/index.html').on('change', browserSync.reload);

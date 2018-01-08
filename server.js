@@ -4,14 +4,20 @@ const bodyParser = require('body-parser');
 const db = require('./src/server/config/db');
 const user = require('./src/server/models/user.server.model');
 const product = require('./src/server/models/product.server.model');
+const morgan = require('morgan');
 
 app.set('superSecret', 'buycepsdotcomsecret');
+
+app.use(express.static('src/app'));
+app.use(express.static('build'));
 
 //parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(morgan('dev'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

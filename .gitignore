@@ -1,6 +1,7 @@
 # Directory
 node_modules/
 build/
+src/app/uploads/
 
 #files
 

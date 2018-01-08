@@ -15,9 +15,12 @@ var addressSchema = new mongoose.Schema({
   },
   state: {
     type: String
+  },
+  country: {
+    type: String
   }
   
-});
+}, {_id: false});
 
 var userSchema = new mongoose.Schema({
     name: {
@@ -30,6 +33,10 @@ var userSchema = new mongoose.Schema({
       unique: true,
       required: true,
       trim: true
+    },
+    avatarImage: {
+      type: String,
+      default: 'images/default_user_profile_image.png'
     },
     phone: {
       type: String,
@@ -44,7 +51,7 @@ var userSchema = new mongoose.Schema({
       default: false
     },
     billingAddress: addressSchema,
-    shippingAddress: [addressSchema],
+    shippingAddress: addressSchema,
     loginDateTime: {
       type: Date
     },
@@ -54,6 +61,7 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.comparePassword = function(password) {
+  console.log("Comparing password........")
   return bcrypt.compareSync(password, this.password);
 }
 

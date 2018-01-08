@@ -1,4 +1,4 @@
-<div class="container" ng-controller="loginController as loginCtrl">
+<div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
       <a ui-sref="app.home"><img class="img-responsive" src="images/logo_dark.png" alt="buyceps.com"></a>
@@ -6,8 +6,8 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top:30px">
-      <div class="alert alert-{{loginCtrl.alert.type}} alert-dismissable fade in" data-ng-show="loginCtrl.alert">
-        <a class="close" data-ng-click="loginCtrl.alert = null" aria-label="close">&times;</a> {{loginCtrl.alert.msg}}
+      <div class="alert alert-{{ctrl.alert.type}} alert-dismissable fade in" data-ng-show="ctrl.alert">
+        <a class="close" data-ng-click="ctrl.alert = null" aria-label="close">&times;</a> {{ctrl.alert.msg}}
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -17,19 +17,19 @@
           <form name="loginForm" ng-submit="submit(loginForm.$valid)" novalidate>
             <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine}">
               <label class="sr-only" for="email">Email Address:</label>
-              <input class="form-control" ng-model="loginCtrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+              <input class="form-control" ng-model="ctrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
               <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email</p>
             </div>
             <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
               <label class="sr-only" for="password">Passowrd:</label>
               <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
-              <input class="form-control" ng-model="loginCtrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
+              <input class="form-control" ng-model="ctrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
               <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
             </div>
-            <button class="btn btn-warning btn-block" ng-click="loginCtrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>
+            <button class="btn btn-warning btn-block" ng-click="ctrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>
             <div class="text-center">
               <div class="checkbox">
-                <label><input type="checkbox" ng-model="loginCtrl.login.rememberMe"> Remember me</label>
+                <label><input type="checkbox" ng-model="ctrl.login.rememberMe"> Remember me</label>
               </div>
               <div class="divider-line">
                 <div class="divider-text">New User?</div>
@@ -59,7 +59,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-theme">Send</button>
+        <button type="button" class="btn btn-warning">Send</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

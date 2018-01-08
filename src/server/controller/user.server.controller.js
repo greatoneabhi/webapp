@@ -8,7 +8,7 @@ var user = mongoose.model('user');
 exports.register = function(req, res, next) {
   var newUser = new user(req.body);
   newUser.password = bcrypt.hashSync(req.body.password, 10);
-
+  //newUser.isAdmin = true;
   user.create(newUser).then(function(user) {
     user.password = undefined;
     res.send(user);
@@ -21,11 +21,13 @@ exports.register = function(req, res, next) {
   });
 };
 
-exports.signIn = function(req, res) {
+exports.signIn = function(req, res, next) {
   user.findOne({
     email: req.body.email
   }, function(err, user) {
-    if (err) throw err;
+    console.log("Sign in");
+    if (err) next(err);
+    console.log("check users");
     if (!user || !user.comparePassword(req.body.password)) {
       return res.status(401).json({
         message: 'Authentication failed. Invalid user or password.'
@@ -53,19 +55,44 @@ exports.signIn = function(req, res) {
   });
 };
 
-exports.getAllUsers = function(req, res, next) {
-  console.log("get all users");
-  user.find({}, function(err, users) {
-    if (err) throw err;
-    return res.send(users);
+exports.updateUser = function(req, res, next) {
+  console.log('update user: ', req.body);
+  var newUser = {};
+  newUser = Object.assign(newUser, req.body);
+  newUser.isAdmin = false;
+  user.findOneAndUpdate({
+    _id: mongoose.Types.ObjectId(req.decoded.id)
+  }, newUser, {new: true}, function(err, user) {
+    if (err) next(err);
+    return res.send("updated user successfully");
   });
 }
+
+exports.getAllUsers = function(req, res, next) {
+  console.log("get all users");
+  user.find({}, {'password':0}, function(err, users) {
+    if (err) next(err);
+    return res.send(users);
+  });
+};
 
 exports.getUser = function(req, res, next) {
   user.findOne({
     _id: mongoose.Types.ObjectId(req.decoded.id)
-  }, function(err, user) {
-    if (err) throw err;
+  }, {'password':0}, function(err, user) {
+    if (err) next(err);
     return res.send(user);
   });
-}
+};
+
+exports.uploadAvatar = function(req, res, next) {
+  console.log("inside upload");
+  console.log(req.files[0].filename);
+  
+  user.findOneAndUpdate({
+    _id: mongoose.Types.ObjectId(req.decoded.id)
+  }, { avatarImage: "uploads/"+req.files[0].filename }, function(err, user) {
+    console.log("User image updated: "+user);
+  })
+  return res.send(req.files); 
+};

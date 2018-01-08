@@ -4,7 +4,8 @@ module.exports = function(gulp, conf, path, inject) {
     return function() {
 
         var injectStyles = gulp.src([
-            path.join(conf.paths.build, 'styles/**/*.css')]);
+            path.join(conf.paths.build, 'styles/**/*.css')
+        ]);
 
         var injectAngularJs = gulp.src([
             path.join(conf.paths.build, 'scripts/**/jquery.min.js'),

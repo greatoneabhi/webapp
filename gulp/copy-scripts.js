@@ -19,7 +19,9 @@ module.exports = function(gulp, conf, path) {
       .pipe(gulp.dest(path.join(conf.paths.build, '/fonts')));
     
     gulp.src([
-      path.join(conf.paths.modules, 'angular-ui-grid/ui-grid.min.css')
+      path.join(conf.paths.modules, 'angular-ui-grid/ui-grid.min.css'),
+      path.join(conf.paths.modules, 'angular-ui-grid/*.woff'),
+      path.join(conf.paths.modules, 'angular-ui-grid/*.ttf')
     ])
     .pipe(gulp.dest(path.join(conf.paths.build, '/styles')));
   };
