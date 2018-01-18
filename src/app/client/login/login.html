@@ -16,14 +16,23 @@
         <div class="panel-body">
           <form name="loginForm" ng-submit="submit(loginForm.$valid)" novalidate>
             <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine}">
-              <label class="sr-only" for="email">Email Address:</label>
-              <input class="form-control" ng-model="ctrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+              <div class="input-group">
+                <label class="sr-only" for="email">Email Address:</label>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input class="form-control" ng-model="ctrl.login.email" type="email" name="email" id="email" placeholder="Enter Email" required>
+              </div>
               <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email</p>
             </div>
             <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
-              <label class="sr-only" for="password">Passowrd:</label>
-              <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
-              <input class="form-control" ng-model="ctrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
+              <div class="input-group">
+                <label class="sr-only" for="password">Passowrd:</label>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input class="form-control" ng-model="ctrl.login.password" type="password" name="password" id="password" placeholder="Enter Password" required>
+              </div>
+              <div style="padding-bottom:20px">
+                <a class="pull-right" data-toggle="modal" data-target="#forgotPasswordModal" href="">Forgot Password?</a>
+              </div>
+              
               <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</p>
             </div>
             <button class="btn btn-warning btn-block" ng-click="ctrl.submit()" ng-disabled="loginForm.$invalid">Submit</button>

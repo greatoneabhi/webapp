@@ -1,55 +1,130 @@
-<nav class="navbar navbar-inverse">
+<nav class="front-navbar navbar navbar-inverse" style="z-index:1049">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand logo" ui-sref="app.home"><img src="images/logo_light.png" height="35px"></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand logo" ui-sref="app.home"><img src="images/logo_light.png" height="30px"></a>
     </div>
-    <ul class="nav navbar-nav navbar-left">
-      <li class="dropdown">
-        <a href class="dropdown-toggle" data-toggle="dropdown">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href class="dropdown-toggle" data-toggle="dropdown">
            Category<b class="caret"></b>
           </a>
-        <ul class="dropdown-menu">
-          <li><a class="text-center" ui-sref="#">category 1</a></li>
-          <li><a class="text-center" ui-sref="#">category 2</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" data-ng-if="!ctrl.isLoggedIn">
-      <li><a ui-sref="register"><i class="fa fa-user-circle-o fa-lg"></i> Register</a></li>
-      <li><a ui-sref="login"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" data-ng-if="ctrl.isLoggedIn">
-      <li class="dropdown">
-        <a href class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{image_source}}" class="user-image img-responsive" alt="User Image">
-            <!--i class="glyphicon glyphicon-user"></i-->
-            <!--i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i-->
+          <ul class="dropdown-menu">
+            <li><a class="text-center" ui-sref="#">category 1</a></li>
+            <li><a class="text-center" ui-sref="#">category 2</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href data-toggle="modal" data-target="#selectLocationModal" data-backdrop="static" data-keyboard="false"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp;{{region}}</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href=""><i class="fa fa-opencart fa-lg" aria-hidden="true"></i>
+           <label class="badge badge-warning">{{ctrl.itemsInCart}}</label>
           </a>
-        <ul class="dropdown-menu">
-          <li><img src="{{image_source}}" class="profile-image img-responsive" alt="User Image" align="middle"></li>
-          <li><a class="text-center" ui-sref="#">{{ctrl.name}}</a></li>
-          <li><a class="text-center" ui-sref="#">{{ctrl.email}}</a></li>
-          <li><a class="text-center" ui-sref="app.profile"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Profile</a></li>
-          <li><a class="text-center" ui-sref="login" ng-click="ctrl.logOut()"><i class="fa fa-sign-out fa-lg"></i> Log Out</a></li>
-        </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" data-ng-if="!ctrl.isLoggedIn">
+        <li><a ui-sref="register"><i class="fa fa-user-circle-o fa-lg"></i> Register</a></li>
+        <li><a ui-sref="login"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" data-ng-if="ctrl.isLoggedIn">
+        <li class="dropdown">
+          <a href class="dropdown-toggle" data-toggle="dropdown">
+            <!--img ng-src="{{ctrl.image_source}}" class="user-image img-responsive" alt="User Image"-->
+            <!--i class="glyphicon glyphicon-user"></i-->
+            <i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><img ng-src="{{ctrl.image_source}}" class="profile-image img-responsive" alt="User Image" align="middle"></li>
+            <li><a class="text-center" ui-sref="#">{{ctrl.name}}</a></li>
+            <li><a class="text-center" ui-sref="#">{{ctrl.email}}</a></li>
+            <li><a class="text-center" ui-sref="app.profile"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Profile</a></li>
+            <li><a class="text-center" ui-sref="login" ng-click="ctrl.logOut()"><i class="fa fa-sign-out fa-lg"></i> Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-warning" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+<nav class="back-navbar navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="">
+        <i class="fa fa-opencart fa-lg" aria-hidden="true"></i>
+        <label class="badge badge-warning">{{ctrl.itemsInCart}}</label>
+        </a>
       </li>
     </ul>
     <form class="navbar-form navbar-right">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" size="50">
+          <div class="input-group-btn">
+            <button class="btn btn-warning" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
   </div>
 </nav>
+
+<!--Selet Location Modal -->
+<div id="selectLocationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Select your location</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="sel1">Select list:</label>
+          <select class="form-control" ng-options="region.code as region.name for region in regions" ng-model="region" ng-change="ctrl.onRegionSelect()">
+              <option style="display:none" value="">select a region</option>
+           </select>
+          <i class="fa fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ctrl.saveRegion()">select</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div ui-view></div>
 <footer class="text-center">
   <a ui-sref="app.home" data-toggle="tooltip" title="Visit buyceps home">buyceps.com</a>
 </footer>
+<script>
+  $(window).scroll(function() {
+
+    if ($(this).scrollTop() > 0) {
+      $('.front-navbar').fadeOut("slow");
+      $('.back-navbar').fadeIn("fast");
+    } else {
+      $('.front-navbar').fadeIn("fast");
+      $('.back-navbar').fadeOut("slow");
+    }
+  });
+</script>

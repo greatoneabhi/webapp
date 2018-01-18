@@ -29,6 +29,9 @@ app.use(function(req, res, next) {
 var routes = require('./src/server/routes/router');
 app.use('/api', routes);
 
+var adminRoutes = require('./src/server/routes/adminRouter');
+app.use('/admin', adminRoutes);
+
 //error handler
 //define as the last app.use callback
 app.use(function(err, req, res, next) {

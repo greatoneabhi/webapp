@@ -6,16 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>buyceps.com</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
     <!-- inject:css -->
     <!-- endinject -->
+  
 </head>
 <body>
 
     <!-- INJECT MAIN CONTENT -->
+  <div loading-pane="isPaneShown">
     <div ui-view></div>
+  </div>
 </body>
 <!-- inject:js -->
 <!-- endinject -->
+ <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
 <script src="app.js"></script>
 <script src="index.route.js"></script>
 <script src="services/user.service.js"></script>

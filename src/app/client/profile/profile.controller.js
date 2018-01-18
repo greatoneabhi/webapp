@@ -11,13 +11,13 @@
 
     var ctrl = this;
 
-    $scope.image_source = "images/default_user_profile_image.png";
+    ctrl.image_source = "images/default_user_profile_image.png";
 
     userService.getUser()
       .then(function(response) {
         ctrl.user = response.data;
         if(ctrl.user.avatarImage) {
-          $scope.image_source = ctrl.user.avatarImage;  
+          ctrl.image_source = ctrl.user.avatarImage;  
         }
       });
 
@@ -47,7 +47,7 @@
       $scope.currentFile = element.files[0];
       var reader = new FileReader();
       reader.onload = function(event) {
-        $scope.image_source = event.target.result
+        ctrl.image_source = event.target.result
         $scope.$apply(function($scope) {
          $scope.files = element.files;
         });

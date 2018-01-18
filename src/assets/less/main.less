@@ -2,15 +2,52 @@
 @import '../../../node_modules/font-awesome/less/font-awesome.less';
 //@import '../../../node_modules/angular-ui-grid/ui-grid.css';
 
+#loading-bar .bar {
+  background: #b0e3f8;
+  height: 4px;
+}
+
+/* remove the original arrow */
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none; 
+  //background-color: #92ceea!important;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+ select + i.fa {
+  float: right;
+  margin-top: -26px;
+  margin-right: 10px;
+  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+  pointer-events: none;
+  /* everything after this is just to cover up the original arrow */
+  /* (for browsers that don't support the syntax used above) */
+  background-color: transparent;
+  color:#6e7071 !important;
+  padding-right: 5px;
+}
+
+select option{
+  padding-right: 21px;
+}
 
 .navbar {
   border-radius: 0px;
-  margin-bottom: 0px
+  margin-bottom: 0px;
+  -webkit-box-shadow: 0 8px 6px -6px #262525;
+  -moz-box-shadow: 0 8px 6px -6px #262525;
+  box-shadow: 0 8px 6px -6px #262525;
 }
 
- .navbar-inverse {
-   background-color: #020414;
-   border-color: #020414;
+.navbar-inverse {
+    background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
+    border-color: #041c30;
 }
 
 .navbar-nav .profile-image {
@@ -36,7 +73,7 @@
 
 .panel-default > .panel-heading {
     color: #efeaea;
-    background-color: #020414;
+    background-color: #333;
     border-color: #ddd;
 }
 
@@ -94,7 +131,7 @@ p {
 
 #admin.navbar {
     //padding: 15px 10px;
-    background: #020414;
+    background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
     border: none;
     border-radius: 0;
     margin-bottom: -1px;
@@ -129,7 +166,7 @@ i, span {
 #sidebar {
     min-width: 230px;
     max-width: 230px;
-    background: #020414;
+    background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
     color: #fff;
     transition: all 0.3s;
 }
@@ -181,7 +218,7 @@ i, span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #020414;
+    //background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
 }
 
 #sidebar .sidebar-header strong {
@@ -191,7 +228,7 @@ i, span {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #020414;
+    border-bottom: 1px solid linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
 }
 
 #sidebar ul li a {
@@ -200,17 +237,17 @@ i, span {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #020414;
+    color: black;
     background: #fff;
 }
 #sidebar ul li a i {
     margin-right: 10px;
 }
 
-#sidebar ul li.active > a, #sidebar a[aria-expanded="true"] {
+/*#sidebar ul li.active > a, #sidebar a[aria-expanded="true"] {
     color: #fff;
-    background: #020414;
-}
+    background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
+}*/
 
 
 a[data-toggle="collapse"] {
@@ -233,7 +270,7 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
 #admin ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    //background: #020414;
+    //background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
 }
 
 /*ul.CTAs {
@@ -250,11 +287,11 @@ ul.CTAs a {
 
 /*a.download {
     background: #fff;
-    color:#020414;
+    color:linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
 }*/
 
 /*a.article, a.article:hover {
-    background: #020414 !important;
+    background: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%) !important;
     color: #fff !important;
 }*/
 
@@ -327,7 +364,7 @@ ul.CTAs a {
 }
 
 .slider-size {
-    height: 300px;
+    height: 400px;
 }
 
 // bootstrap example home
@@ -369,7 +406,7 @@ ul.CTAs a {
 
 .thumbnail .caption-full {
     padding: 9px;
-    color: #020414;
+    color: linear-gradient(141deg, #210430 0%, #dd3612 51%, #6f0854 75%);
 }*/
 
 footer {

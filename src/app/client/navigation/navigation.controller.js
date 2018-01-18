@@ -7,23 +7,53 @@
 
   function navigationController($scope, $http, $state, $window, userService) {
     console.log('navigation controller');
-    var navigationCtrl = this;
+    var ctrl = this;
+    
+    ctrl.image_source = "images/default_user_profile_image.png";
+    
+    $scope.regions = [{
+        name: "Ranchi",
+        code: "RNC"
+      },
+      {
+        name: "Mumbai",
+        code: "MUM"
+      }
+    ];
 
-    navigationCtrl.isLoggedIn = false;
+    ctrl.isLoggedIn = false;
+    $scope.region = $window.localStorage.getItem('region_selected');
+    if(!$scope.region) {
+      console.log("region selected is: ", $scope.region);
+      $('#selectLocationModal').modal({backdrop: true, keyboard: false, show: true});
+      if($('#selectLocationModal').data('bs.modal')) {
+       $('#selectLocationModal').data('bs.modal').options.backdrop = 'static'; 
+      }
+    }
     
-    $scope.image_source = "images/default_user_profile_image.png";
+    ctrl.saveRegion = function() {
+      if($scope.region) {
+        $window.localStorage.setItem('region_selected', $scope.region);
+      }
+    }
     
+    ctrl.onRegionSelect = function() {
+      console.log("region selected is: ", $scope.region);
+    }
+
     userService.getUser()
       .then(function(response) {
-        navigationCtrl.isLoggedIn = true;
-        navigationCtrl.name = response.data.name;
-        navigationCtrl.email = response.data.email;
-        if(response.data.avatarImage) {
-          $scope.image_source = response.data.avatarImage;
-        }        
-    });
+        ctrl.isLoggedIn = true;
+        ctrl.name = response.data.name;
+        ctrl.email = response.data.email;
+        if (response.data.avatarImage) {
+          console.log('image exists');
+          ctrl.image_source = response.data.avatarImage;
+          $scope.region = $window.localStorage.getItem('region_selected');
+        }
+      });
 
-    navigationCtrl.logOut = function() {
+    ctrl.logOut = function() {
       $window.localStorage.setItem('auth_token', '');
       $http.defaults.headers.common['x-access-token'] = null;
     }

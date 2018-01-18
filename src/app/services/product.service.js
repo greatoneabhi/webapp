@@ -21,7 +21,7 @@
       var promise;
       var deferred = $q.defer();
       if (!promise) {
-        promise = $http.delete('/api/product/'+product._id)
+        promise = $http.delete('/admin/products/'+product._id)
           .then(function(response) {
             deferred.resolve(response);
           }).catch(function(error) {
@@ -36,7 +36,7 @@
       var promise;
       var deferred = $q.defer();
       if (!promise) {
-        promise = $http.get('/api/products')
+        promise = $http.get('/admin/products')
           .then(function(response) {
             deferred.resolve(response);
           }).catch(function(error) {
@@ -51,7 +51,7 @@
       var promise;
       var deferred = $q.defer();
       if (!promise) {
-        promise = $http.put('/api/product', product)
+        promise = $http.put('/admin/products', product)
           .then(function(response) {
             deferred.resolve(response);
           }).catch(function(error) {

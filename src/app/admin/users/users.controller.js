@@ -19,6 +19,7 @@
         columnDefs: [{
             field: '_id',
             enableFiltering: false,
+            visible: false,
             width: '20%'
           },
           {
