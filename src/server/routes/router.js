@@ -1,86 +1,51 @@
-const express = require('express');
-const router = express.Router();
-const jwt = require('jsonwebtoken');
-const multer = require('multer');
-const user = require('../controller/user.server.controller');
-//const product = require('../controller/product.server.controller');
+(function() {
+  'use strict';
 
-var upload = multer({
-  dest: 'src/app/uploads/'
-});
+  const express = require('express');
+  const router = express.Router();
+  const jwt = require('jsonwebtoken');
+  const multer = require('multer');
+  const user = require('../controller/user.server.controller');
 
-router.get('/', function(req, res) {
-  res.send('Server is running');
-});
+  var upload = multer({
+    dest: 'src/app/uploads/'
+  });
+
+  router.get('/', function(req, res) {
+    res.send('Server is running');
+  });
 
 
-router.post('/authenticate', user.signIn);
-router.post('/user', user.register);
+  router.post('/authenticate', user.signIn);
+  router.post('/user', user.register);
 
-//User API's
-router.get('/user', isAuthenticatedUser, user.getUser);
-router.put('/user', isAuthenticatedUser, user.updateUser);
-router.post('/user/upload', isAuthenticatedUser, upload.any(), user.uploadAvatar);
+  //User API's
+  router.route('/user')
+    .get(isAuthenticatedUser, user.getUser)
+    .put(isAuthenticatedUser, user.updateUser)
+    .post(isAuthenticatedUser, upload.any(), user.uploadAvatar);
 
-//Admin API's
-//router.get('/users', isAuthenticatedAdmin, user.getAllUsers);
-//router.post('/product', isAuthenticatedAdmin, product.create);
-//router.get('/products', isAuthenticatedAdmin, product.getAll);
-//router.put('/product', isAuthenticatedAdmin, product.update);
-//router.put('/product/upload/:id', isAuthenticatedAdmin, upload.any(), product.upload);
-//router.delete('/product/:id', isAuthenticatedAdmin, product.delete);
+  function isAuthenticatedUser(req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-function isAuthenticatedUser(req, res, next) {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  if (token) {
-    jwt.verify(token, 'buycepsdotcomsecret', function(err, decoded) {
-      if (err) {
-        console.log(err);
-        return res.status(401).send({
-          message: 'unauthorized !'
-        });
-      } else {
-        req.decoded = decoded;
-        next();
-      }
-    });
-  } else {
-    return res.status(403).send({
-      message: 'Invalid token or No token'
-    });
-  }
-}
-
-/*function isAuthenticatedAdmin(req, res, next) {
-
-  //console.log("inside is admin method");
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  if (token) {
-    jwt.verify(token, 'buycepsdotcomsecret', function(err, decoded) {
-      if (err) {
-        console.log(err);
-        return res.status(401).json({
-          message: 'unauthorized !'
-        });
-      } else {
-        //console.log(decoded);
-        req.decoded = decoded;
-        if (decoded.isAdmin) {
-          next();
-        } else {
-          return res.status(401).json({
+    if (token) {
+      jwt.verify(token, 'buycepsdotcomsecret', function(err, decoded) {
+        if (err) {
+          console.log(err);
+          return res.status(401).send({
             message: 'unauthorized !'
           });
+        } else {
+          req.decoded = decoded;
+          next();
         }
-      }
-    });
-  } else {
-    return res.status(403).json({
-      message: 'Invalid token or No token'
-    });
+      });
+    } else {
+      return res.status(403).send({
+        message: 'Invalid token or No token'
+      });
+    }
   }
-}*/
-
-module.exports = router;
+  
+  module.exports = router;
+})();

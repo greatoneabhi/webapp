@@ -75,7 +75,7 @@
 
       console.log("Get all users");
       var token = $window.localStorage.getItem('auth_token');
-      $http.get('/api/users', {
+      $http.get('/admin/users', {
         headers: {
           'x-access-token': token
         }
