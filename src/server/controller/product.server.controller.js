@@ -58,3 +58,11 @@ exports.upload = function(req, res, next) {
   })
   return res.send(req.files);
 }
+
+exports.getAllProductsForAllUsers = function(req, res, next) {
+  console.log('get all products for all users');
+  console.log('page number: ', req.query.page);
+  console.log('limit: ', req.query.limit);
+  return res.send("success")
+  
+}

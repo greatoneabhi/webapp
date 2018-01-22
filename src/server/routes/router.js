@@ -6,6 +6,7 @@
   const jwt = require('jsonwebtoken');
   const multer = require('multer');
   const user = require('../controller/user.server.controller');
+  const product = require('../controller/product.server.controller');
 
   var upload = multer({
     dest: 'src/app/uploads/'
@@ -18,6 +19,7 @@
 
   router.post('/authenticate', user.signIn);
   router.post('/user', user.register);
+  router.get('/products', product.getAllProductsForAllUsers)
 
   //User API's
   router.route('/user')
