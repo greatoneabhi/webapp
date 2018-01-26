@@ -19,7 +19,7 @@
 
   router.post('/authenticate', user.signIn);
   router.post('/user', user.register);
-  router.get('/products', product.getAllProductsForAllUsers)
+  router.get('/products', product.getAllProductsForAllUsers);
 
   //User API's
   router.route('/user')
