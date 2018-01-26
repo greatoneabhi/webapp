@@ -26,5 +26,5 @@ gulp.task('serve', ['inject', 'nodemon'], require('./gulp/serve')(gulp, conf, br
 gulp.task('default', ['nodemon'], function() {
     gulp.watch('src/**/*.js', ['inject']);
     gulp.watch('src/**/*.html', ['inject']);
-    gulp.watch('build/index.html').on('change', browserSync.reload);
+    //gulp.watch('build/index.html').on('change', browserSync.reload);
 });
