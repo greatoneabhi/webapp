@@ -13,7 +13,6 @@
     loginCtrl.alert = null;
 
     loginCtrl.submit = function() {
-      console.log("login submit", loginCtrl.login);
       $http.post('/api/authenticate', loginCtrl.login)
         .then(function(response) {
           if (response.data.isAdmin) {
@@ -27,9 +26,10 @@
             $state.go('app.home');
           }
         }).catch(function(err) {
+          console.log("console error: ", err.data.message);
           loginCtrl.alert = {
             type: 'danger',
-            msg: "Login Error. Please contact us through email"
+            msg: err.data.message
           };
         });
     };
