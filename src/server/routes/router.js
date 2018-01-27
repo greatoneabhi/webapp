@@ -20,6 +20,8 @@
   router.post('/authenticate', user.signIn);
   router.post('/user', user.register);
   router.get('/products', product.getAllProductsForAllUsers);
+  router.post('/fakeproducts', product.createFakeProducts); 
+  router.post('/fakeusers', user.createFakeUsers);
 
   //User API's
   router.route('/user')

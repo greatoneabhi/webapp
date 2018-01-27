@@ -8,7 +8,7 @@
     <!--button type="button" class="btn btn-success">Save</button-->
   </div>
   <div style="padding-top:20px">
-    <div id="productGrid" ui-grid="ctrl.gridOptions" class="grid" style="height:400px" ui-grid-auto-resize ui-grid-empty-base-layer ui-grid-selection ui-grid-exporter ui-grid-edit ui-grid-row-edit ui-grid-resize-columns ui-grid-auto-resize ui-grid-expandable></div>
+    <div id="productGrid" ui-grid="ctrl.gridOptions" class="grid" style="height:500px" ui-grid-auto-resize ui-grid-pagination ui-grid-empty-base-layer ui-grid-selection ui-grid-exporter ui-grid-edit ui-grid-row-edit ui-grid-resize-columns ui-grid-auto-resize ui-grid-expandable></div>
   </div>
   <div style="width:700px">
     <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" dismiss-on-timeout="5000" close="alerts.splice($index, 1);">

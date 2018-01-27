@@ -15,6 +15,8 @@
         enableGridMenu: true,
         exporterMenuPdf: false,
         exporterMenuExcel: false,
+        paginationPageSizes: [25, 50, 75],
+      paginationPageSize: 25,
         exporterCsvFilename: 'users.csv',
         columnDefs: [{
             field: '_id',

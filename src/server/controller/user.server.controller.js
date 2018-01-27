@@ -97,5 +97,24 @@
         })
         return res.send(req.files);
     };
+  
+  //Fake users for testing
+  exports.createFakeUsers = function(req, res, next) {
+    console.log('create fake users');
+    for(var i = 1; i <= 500; i++) {
+      console.log("creating user");
+      var newUser = new user();
+      newUser.password = bcrypt.hashSync('password', 10);
+      newUser.name = "User_" + i;
+      newUser.phone = "9999999999";
+      newUser.email = "user_" + i + "@testmail.com";
+      user.create(newUser).then(function(response) {
+        console.log('created');
+      }).catch(function(err) {
+        next(err);
+      });
+    }
+    return res.send("success");
+  }
 
 })();

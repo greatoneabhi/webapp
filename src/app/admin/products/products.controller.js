@@ -10,19 +10,19 @@
     console.log("products controller");
 
     var ctrl = this;
-    
+
     ctrl.product = {};
-    
+
     ctrl.product.description = [];
-    
+
     ctrl.addDescriptions = function() {
       console.log('add description');
       ctrl.product.description.push(ctrl.description);
       ctrl.description = "";
     }
-    
+
     $scope.remove = function(index) {
-    	ctrl.product.description.splice(index, 1);
+      ctrl.product.description.splice(index, 1);
     };
 
     $scope.image_source = "images/image_icon.jpg";
@@ -69,6 +69,8 @@
       enableGridMenu: true,
       exporterMenuPdf: false,
       exporterMenuExcel: false,
+      paginationPageSizes: [25, 50, 75],
+      paginationPageSize: 25,
       rowHeight: 60,
       exporterCsvFilename: 'products.csv',
       columnDefs: [{
@@ -180,15 +182,15 @@
       },
       data: data
     };
-    
+
     ctrl.deleteRow = function(row) {
       console.log(row.entity);
       productService.delete(row.entity)
         .then(function(response) {
-        console.log('product deleted successfully')
-      }).catch(function(error) {
-        console.log('Error while deleting the product');
-      });
+          console.log('product deleted successfully')
+        }).catch(function(error) {
+          console.log('Error while deleting the product');
+        });
       var index = ctrl.gridOptions.data.indexOf(row.entity);
       ctrl.gridOptions.data.splice(index, 1);
     };
