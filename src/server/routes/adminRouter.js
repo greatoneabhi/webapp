@@ -20,6 +20,9 @@
     .get(isAuthenticatedAdmin, product.getAll)
     .post(isAuthenticatedAdmin, product.create)
     .put(isAuthenticatedAdmin, product.update);
+  
+  router.route('/createproducts')
+    .post(product.createProduct);
 
   router.route('/products/:id')
     .delete(isAuthenticatedAdmin, product.delete);

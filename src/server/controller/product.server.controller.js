@@ -3,10 +3,21 @@
 
   var mongoose = require('mongoose');
   var product = mongoose.model('product');
+  var region = mongoose.model('region');
+  var variant = mongoose.model('variant');
 
   //create
   exports.create = function(req, res, next) {
     console.log('create product: ', req.body);
+    product.create(req.body).then(function(response) {
+      return res.send(response);
+    }).catch(function(err) {
+      next(err);
+    });
+  }
+
+  exports.createProduct = function(req, res, next) {
+    console.log("create product: ", req.body);
     product.create(req.body).then(function(response) {
       return res.send(response);
     }).catch(function(err) {

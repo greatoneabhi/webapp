@@ -51,7 +51,9 @@
           ctrl.image_source = response.data.avatarImage;
           $scope.region = $window.localStorage.getItem('region_selected');
         }
-      });
+      }).catch(function(error) {
+      $state.go('login');
+    });
 
     ctrl.logOut = function() {
       $window.localStorage.setItem('auth_token', '');

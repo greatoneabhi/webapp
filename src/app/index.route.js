@@ -61,7 +61,7 @@
 
                 .state('admin.products', {
                     url: '/products',
-                    templateUrl: 'admin/products/products.html',
+                    templateUrl: 'admin/products/productsNew.html',
                     controller: 'productsController',
                     controllerAs: 'ctrl'
                 })

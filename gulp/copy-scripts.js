@@ -6,6 +6,8 @@ module.exports = function(gulp, conf, path) {
         path.join(conf.paths.modules, 'jquery/dist/**/jquery.min.js'),
         path.join(conf.paths.modules, 'bootstrap/dist/**/*.min.js'),
         path.join(conf.paths.modules, 'angular/**/*.min.js'),
+        path.join(conf.paths.modules, 'angular-sanitize/**/*.min.js'),
+        path.join(conf.paths.modules, 'ui-select/dist/**/*.js'),
         path.join(conf.paths.modules, 'angular-ui-router/release/**/*.min.js'),
         path.join(conf.paths.modules, 'angular-ui-bootstrap/dist/**/ui-bootstrap.js'),
         path.join(conf.paths.modules, 'angular-ui-grid/**/ui-grid.min.js')
@@ -20,6 +22,7 @@ module.exports = function(gulp, conf, path) {
     
     gulp.src([
       path.join(conf.paths.modules, 'angular-ui-grid/ui-grid.min.css'),
+      path.join(conf.paths.modules, 'ui-select/dist/select.css'),
       path.join(conf.paths.modules, 'angular-ui-grid/*.woff'),
       path.join(conf.paths.modules, 'angular-ui-grid/*.ttf')
     ])

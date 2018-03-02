@@ -2,7 +2,56 @@
 
 var mongoose = require('mongoose');
 
+var regionSchema = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  quantity: {
+    type: Number
+  }
+});
+
+var variantSchema = new mongoose.Schema({
+  sku: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  flavour: {
+    type: String
+  },
+  size: {
+    type: String
+  },
+  regions: [regionSchema]
+});
+
+var category = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  subCategory: [{type: String}]
+});
+
 var productSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String
+  },
+  brand: {
+    type: String
+  },
+  routine: {
+    type: String
+  },
+  variants: [variantSchema]
+});
+
+/*var productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -56,6 +105,8 @@ var productSchema = new mongoose.Schema({
     type: String,
     default: 'images/image_icon.jpg'
   }
-});
+});*/
 
+module.exports = mongoose.model('region', regionSchema);
+module.exports = mongoose.model('variant', variantSchema);
 module.exports = mongoose.model('product', productSchema);

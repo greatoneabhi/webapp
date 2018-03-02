@@ -1,0 +1,93 @@
+<div>
+  <h2>
+    Products
+  </h2>
+  <hr>
+  <div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewProductsModal">Add New</button>
+  </div>
+  <div class="container">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Routine</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in ctrl.products">
+          <td>{{product.title}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.brand}}</td>
+          <td>{{product.routine}}</td>
+          <td>
+            <button class="btn btn-info">
+              Variants
+            </button>
+            <button class="btn btn-warning">
+              Edit
+            </button>
+            <button class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--Add New Products Modal -->
+<div id="addNewProductsModal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <!-- Modal content-->
+    <form encType="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Products</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="col-sm-5">
+              <h2>
+                Details
+              </h2>
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.product.title" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.product.brand" placeholder="Brand">
+                </div>
+                <div class="form-group">
+                    <ui-select multiple tagging tagging-label="false" ng-model="ctrl.selected.categories" close-on-select="false" theme="bootstrap" title="Choose a category">
+                      <ui-select-match placeholder="Select Categories..">{{$item.subCategory}}</ui-select-match>
+                      <ui-select-choices group-by="'name'" repeat="category in ctrl.categories.concat($select.search) | filter:$select.search">
+                        {{category.subCategory}}
+                      </ui-select-choices>
+                    </ui-select>
+                  </ui-select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.product.routine" placeholder="Routine">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" ng-model="ctrl.product.description" rows="5" placeholder="Description"></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="ctrl.createProduct()">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

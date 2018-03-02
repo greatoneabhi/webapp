@@ -13,6 +13,7 @@
     service.getAll = getAll;
     service.update = update;
     service.delete = deleteProduct;
+    service.createProduct = createProduct;
     
     return service;
     
@@ -60,6 +61,19 @@
         return deferred.promise;
       }
       return deferred.promise;
+    }
+    
+    function createProduct(product) {
+      var promise;
+      var deferred = $q.defer();
+      if(!promise) {
+        promise = $http.post('/admin/createproducts')
+          .then(function(response) {
+          deferred.resolve(response);
+        }).catch(function(error) {
+          deferred.reject(error);
+        });
+      }
     }
   }
   
