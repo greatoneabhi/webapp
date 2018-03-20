@@ -13,7 +13,8 @@
     service.getAll = getAll;
     service.update = update;
     service.delete = deleteProduct;
-    service.createProduct = createProduct;
+    service.create = createProduct;
+    service.getBrands = getBrands;
     
     return service;
     
@@ -64,17 +65,35 @@
     }
     
     function createProduct(product) {
+      console.log("Create product: ", product);
       var promise;
       var deferred = $q.defer();
       if(!promise) {
-        promise = $http.post('/admin/createproducts')
+        promise = $http.post('/admin/createproducts', product)
           .then(function(response) {
           deferred.resolve(response);
         }).catch(function(error) {
           deferred.reject(error);
         });
+        return deferred.promise;
       }
+      return deferred.promise;
     }
-  }
-  
+    
+    function getBrands() {
+      console.log("get all brands");
+      var promise;
+      var deferred = $q.defer();
+      if (!promise) {
+        promise = $http.get('/api/brands')
+          .then(function(response) {
+            deferred.resolve(response);
+          }).catch(function(error) {
+            deferred.reject(error);
+          });
+        return deferred.promise;
+      }
+      return deferred.promise;
+    }
+  }  
 })();

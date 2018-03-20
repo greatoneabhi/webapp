@@ -22,7 +22,7 @@
     .put(isAuthenticatedAdmin, product.update);
   
   router.route('/createproducts')
-    .post(product.createProduct);
+    .post(isAuthenticatedAdmin, product.createProduct);
 
   router.route('/products/:id')
     .delete(isAuthenticatedAdmin, product.delete);

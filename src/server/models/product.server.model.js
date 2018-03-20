@@ -2,6 +2,15 @@
 
 var mongoose = require('mongoose');
 
+var categoryShema = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  subCategory: {
+    type: String
+  }
+});
+
 var regionSchema = new mongoose.Schema({
   name: {
     type: String
@@ -27,19 +36,15 @@ var variantSchema = new mongoose.Schema({
   regions: [regionSchema]
 });
 
-var category = new mongoose.Schema({
-  name: {
-    type: String
-  },
-  subCategory: [{type: String}]
-});
-
 var productSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
   },
   category: {
+    type: String
+  },
+  subCategory: {
     type: String
   },
   brand: {
@@ -107,6 +112,7 @@ var productSchema = new mongoose.Schema({
   }
 });*/
 
+mongoose.exports = mongoose.model('category', categoryShema);
 module.exports = mongoose.model('region', regionSchema);
 module.exports = mongoose.model('variant', variantSchema);
 module.exports = mongoose.model('product', productSchema);

@@ -30,7 +30,7 @@
             <button class="btn btn-warning">
               Edit
             </button>
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" ng-click="ctrl.deleteProduct(product)">
               Delete
             </button>
           </td>
@@ -62,15 +62,28 @@
                   <input type="text" class="form-control" ng-model="ctrl.product.title" placeholder="Title" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" ng-model="ctrl.product.brand" placeholder="Brand">
+                  <!--input type="text" class="form-control" ng-model="ctrl.product.brand" placeholder="Brand"-->
+                  <ui-select ng-model="ctrl.brand.selected" theme="bootstrap" ng-disabled="ctrl.disabled" reset-search-input="false" title="Choose an category">
+                    <ui-select-match placeholder="Brand">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="brand in ctrl.brands | filter: $select.search" refresh="ctrl.refreshBrandSearch($select)" refresh-delay="0">
+                      <div ng-bind-html="brand | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
                 </div>
                 <div class="form-group">
-                    <ui-select multiple tagging tagging-label="false" ng-model="ctrl.selected.categories" close-on-select="false" theme="bootstrap" title="Choose a category">
-                      <ui-select-match placeholder="Select Categories..">{{$item.subCategory}}</ui-select-match>
-                      <ui-select-choices group-by="'name'" repeat="category in ctrl.categories.concat($select.search) | filter:$select.search">
-                        {{category.subCategory}}
-                      </ui-select-choices>
-                    </ui-select>
+                  <ui-select ng-model="ctrl.category.selected" theme="bootstrap" ng-disabled="ctrl.disabled" reset-search-input="false" title="Choose an category">
+                    <ui-select-match placeholder="Category">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="category in ctrl.categories | filter: $select.search">
+                      <div ng-bind-html="category.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+                <div class="form-group">
+                  <ui-select ng-model="ctrl.subCategory.selected" theme="bootstrap" ng-disabled="ctrl.disabled" reset-search-input="false" title="Choose an category">
+                    <ui-select-match placeholder="Sub-Category">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="subcategory in ctrl.category.selected.subCategories | filter: $select.search">
+                      <div ng-bind-html="subcategory | highlight: $select.search"></div>
+                    </ui-select-choices>
                   </ui-select>
                 </div>
                 <div class="form-group">

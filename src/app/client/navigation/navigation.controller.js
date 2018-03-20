@@ -52,8 +52,8 @@
           $scope.region = $window.localStorage.getItem('region_selected');
         }
       }).catch(function(error) {
-      $state.go('login');
-    });
+        console.log("Error: ", error);
+      });
 
     ctrl.logOut = function() {
       $window.localStorage.setItem('auth_token', '');

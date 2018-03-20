@@ -68,6 +68,17 @@
     })
     return res.send(req.files);
   }
+  
+  exports.getBrands = function(req, res, next) {
+    console.log("Get all brands");
+    
+    product.find().distinct('brand')
+      .then(function(response) {
+      res.send(response);
+    }).catch(function(err) {
+      next(err);
+    });
+  }
 
   exports.getAllProductsForAllUsers = function(req, res, next) {
     console.log('get all products for all users');
@@ -82,25 +93,5 @@
         if (err) next(err);
         return res.send(products);
       });
-  }
-
-  //Fake products for testing
-  exports.createFakeProducts = function(req, res, next) {
-    console.log('create fake products');
-    for (var i = 0; i <= 100; i++) {
-      var newProduct = new product();
-      newProduct.name = "Product_" + i;
-      newProduct.title = "Title_" + i;
-      newProduct.quantity = 200;
-      newProduct.description = "Desription_" + i;
-      newProduct.category = "Category_" + i;
-
-      product.create(newProduct).then(function(response) {
-        //created
-      }).catch(function(err) {
-        next(err);
-      });
-    }
-    return res.send("success");
   }
 })();
