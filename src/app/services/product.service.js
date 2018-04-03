@@ -11,6 +11,7 @@
     
     //service.create = create;
     service.getAll = getAll;
+    service.get = get;
     service.update = update;
     service.delete = deleteProduct;
     service.create = createProduct;
@@ -29,6 +30,22 @@
           }).catch(function(error) {
             deferred.reject(error);
           });
+        return deferred.promise;
+      }
+      return deferred.promise;
+    }
+    
+    function get(productId) {
+      console.log("get product: ", productId);
+      var promise;
+      var deferred = $q.defer();
+      if(!promise) {
+        promise = $http.get('/admin/products/'+productId)
+                    .then(function(response) {
+                      deferred.resolve(response);
+                  }).catch(function(error) {
+                      deferred.reject(error);
+                  });
         return deferred.promise;
       }
       return deferred.promise;

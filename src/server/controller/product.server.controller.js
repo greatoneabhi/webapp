@@ -3,8 +3,6 @@
 
   var mongoose = require('mongoose');
   var product = mongoose.model('product');
-  var region = mongoose.model('region');
-  var variant = mongoose.model('variant');
 
   //create
   exports.create = function(req, res, next) {
@@ -42,7 +40,17 @@
     product.find({}, function(err, products) {
       if (err) next(err);
       return res.send(products);
-    })
+    });
+  }
+  
+  exports.get = function(req, res, next) {
+    console.log("get product: ", req.params.id);
+    product.find({
+      _id: mongoose.Types.ObjectId(req.params.id)
+    }, function(err, product) {
+      if (err) next(err);
+      return res.send(product);
+    });
   }
 
   exports.delete = function(req, res, next) {

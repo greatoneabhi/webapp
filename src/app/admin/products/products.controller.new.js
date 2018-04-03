@@ -69,14 +69,14 @@
       }).catch(function(error) {
         console.log('error: ', error);
       });
-    
+
     //Get all brands
     productService.getBrands()
       .then(function(response) {
-      ctrl.brands = response.data;
-    }).catch(function(error) {
-      console.log('error ', error);
-    });
+        ctrl.brands = response.data;
+      }).catch(function(error) {
+        console.log('error ', error);
+      });
 
     ctrl.createProduct = function() {
       ctrl.product.brand = ctrl.brand.selected;
@@ -99,6 +99,19 @@
         }).catch(function(error) {
           console.log('Error while deleting the product');
         });
+    }
+
+    ctrl.productVariants = function(productId) {
+      console.log("productId: ", productId);
+      $state.go('admin.productvariants', {
+        productId: productId
+      }, {location: true});
+    }
+
+    ctrl.editProduct = function(product) {
+      $state.go('admin.editproduct', {
+        editProduct: product
+      });
     }
 
   }

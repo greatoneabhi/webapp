@@ -24,10 +24,10 @@
           <td>{{product.brand}}</td>
           <td>{{product.routine}}</td>
           <td>
-            <button class="btn btn-info">
+            <button class="btn btn-info" ng-click="ctrl.productVariants(product._id)">
               Variants
             </button>
-            <button class="btn btn-warning">
+            <button class="btn btn-warning" ng-click="ctrl.editProduct(product)">
               Edit
             </button>
             <button class="btn btn-danger" ng-click="ctrl.deleteProduct(product)">

@@ -7,6 +7,7 @@
   const multer = require('multer');
   const user = require('../controller/user.server.controller');
   const product = require('../controller/product.server.controller');
+  const variant = require('../controller/variants.server.controller');
 
   var upload = multer({
     dest: 'src/app/uploads/'
@@ -25,10 +26,14 @@
     .post(isAuthenticatedAdmin, product.createProduct);
 
   router.route('/products/:id')
+    .get(isAuthenticatedAdmin, product.get)
     .delete(isAuthenticatedAdmin, product.delete);
 
   router.route('/products/upload/:id')
-    .put(isAuthenticatedAdmin, upload.any(), product.upload);
+    .delete(isAuthenticatedAdmin, upload.any(), product.upload);
+  
+  router.route('/variants/:productid')
+    .put(isAuthenticatedAdmin, variant.deleteVariant);
 
 
   function isAuthenticatedAdmin(req, res, next) {
