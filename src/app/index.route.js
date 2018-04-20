@@ -76,9 +76,6 @@
     
         .state('admin.productvariants', {
           url: '/product/:productId',
-          /*params: {
-            product: null
-          },*/
           templateUrl: 'admin/products/product.variants.html',
           controller: 'productVariantsController',
           controllerAs: 'ctrl'

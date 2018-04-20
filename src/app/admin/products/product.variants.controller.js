@@ -8,7 +8,6 @@
   
   function productVariantsController($scope, $http, $q, $state, $window, productService, variantService) {
     var ctrl = this;
-    /*ctrl.product = $state.params.productI;*/
     ctrl.variant = {};
     ctrl.variant.regions = [];
     
@@ -47,7 +46,10 @@
     
     ctrl.editVariant = function(productId, variant) {
       console.log("Edit variant button click");
-      $state.go('admin.editvariant');
+      $state.go('admin.editvariant', {
+        productId: productId,
+        variant: variant
+      });
     }
     
   }
