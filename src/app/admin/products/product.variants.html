@@ -25,8 +25,8 @@
           <td>{{variant.sku}}</td>
           <td>{{variant.flavour}}</td>
           <td>{{variant.size}}</td>
-          <td>{{variant.regions}}</td>
-          <td></td>
+          <td>{{variant.region}}</td>
+          <td>{{variant.quantity}}</td>
           <td>
             <button class="btn btn-warning" ng-click="ctrl.editVariant(ctrl.product._id, variant)">Edit</button>
             <button class="btn btn-danger" ng-click="ctrl.deleteVariant(ctrl.product._id, variant)">Delete</button>
@@ -67,10 +67,10 @@
                   <input type="text" class="form-control" ng-model="ctrl.variant.size" placeholder="size" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" ng-model="ctrl.region.name" placeholder="Region" required>
+                  <input type="text" class="form-control" ng-model="ctrl.variant.region" placeholder="Region" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" ng-model="ctrl.region.quantity" placeholder="Quantity" required>
+                  <input type="text" class="form-control" ng-model="ctrl.variant.quantity" placeholder="Quantity" required>
                 </div>
               </form>
             </div>

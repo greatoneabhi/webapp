@@ -66,11 +66,11 @@
       return deferred.promise;
     }
 
-    function update(product) {
+    function update(productId, variant) {
       var promise;
       var deferred = $q.defer();
       if (!promise) {
-        promise = $http.put('/admin/products', product)
+        promise = $http.put('/admin/products/'+productId, variant)
           .then(function(response) {
             deferred.resolve(response);
           }).catch(function(error) {

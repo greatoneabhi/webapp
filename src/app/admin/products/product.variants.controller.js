@@ -9,7 +9,7 @@
   function productVariantsController($scope, $http, $q, $state, $window, productService, variantService) {
     var ctrl = this;
     ctrl.variant = {};
-    ctrl.variant.regions = [];
+    //ctrl.variant.regions = [];
     
     console.log("inside productVariantsController: ", $state.params.productId);
     
@@ -23,11 +23,11 @@
     
     ctrl.createVariants = function() {
       console.log("Variant: ", ctrl.variant);
-      ctrl.variant.regions.push(ctrl.region);
-      console.log("Regions: ", ctrl.variant.regions);
-      ctrl.product.variants.push(ctrl.variant);
+      //ctrl.variant.regions.push(ctrl.region);
+      //console.log("Regions: ", ctrl.variant.regions);
+      //ctrl.product.variants.push(ctrl.variant);
       console.log("Product is ", ctrl.product);
-      productService.update(ctrl.product)
+      variantService.create(ctrl.product._id, ctrl.variant)
         .then(function(response) {
         console.log(response.data);
       }).catch(function(error) {

@@ -25,14 +25,6 @@
 
   exports.update = function(req, res, next) {
     console.log('update product: ', req.body);
-    product.findOneAndUpdate({
-      _id: mongoose.Types.ObjectId(req.body._id)
-    }, req.body, {
-      new: true
-    }, function(err, product) {
-      if (err) next(err);
-      return res.send('updated product successfuly');
-    });
   }
 
   exports.getAll = function(req, res, next) {
@@ -42,7 +34,7 @@
       return res.send(products);
     });
   }
-  
+
   exports.get = function(req, res, next) {
     console.log("get product: ", req.params.id);
     product.find({
@@ -76,16 +68,16 @@
     })
     return res.send(req.files);
   }
-  
+
   exports.getBrands = function(req, res, next) {
     console.log("Get all brands");
-    
+
     product.find().distinct('brand')
       .then(function(response) {
-      res.send(response);
-    }).catch(function(err) {
-      next(err);
-    });
+        res.send(response);
+      }).catch(function(err) {
+        next(err);
+      });
   }
 
   exports.getAllProductsForAllUsers = function(req, res, next) {

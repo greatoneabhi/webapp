@@ -11,15 +11,6 @@ var categoryShema = new mongoose.Schema({
   }
 });
 
-var regionSchema = new mongoose.Schema({
-  name: {
-    type: String
-  },
-  quantity: {
-    type: Number
-  }
-});
-
 var variantSchema = new mongoose.Schema({
   sku: {
     type: String
@@ -33,8 +24,13 @@ var variantSchema = new mongoose.Schema({
   size: {
     type: String
   },
-  regions: [regionSchema]
-});
+  region: {
+    type: String
+  },
+  quantity: {
+    type: Number
+  }
+}, {_id: false});
 
 var productSchema = new mongoose.Schema({
   title: {
@@ -56,63 +52,6 @@ var productSchema = new mongoose.Schema({
   variants: [variantSchema]
 });
 
-/*var productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true
-  },
-  title: {
-    type: String,
-    trim: true
-  },
-  quantity: {
-    type: Number
-  },
-  description:[ {
-    type: String
-  }],
-  category: {
-    type: String
-  },
-  size: {
-    type: String
-  },
-  region: {
-    type: String
-  },
-  brand: {
-    type: String
-  },
-  sellingPrice: {
-    type: String
-  },
-  marketPrice: {
-    type: String
-  },
-  flavour: {
-    type: String
-  },
-  sku : {
-    type: String
-  },
-  discount: {
-    type: Number
-  },
-  hsnCode: {
-    type: String
-  },
-  gstTax: {
-    type: String
-  },
-  productImage: {
-    type: String,
-    default: 'images/image_icon.jpg'
-  }
-});*/
-
 mongoose.exports = mongoose.model('category', categoryShema);
-module.exports = mongoose.model('region', regionSchema);
 module.exports = mongoose.model('variant', variantSchema);
 module.exports = mongoose.model('product', productSchema);

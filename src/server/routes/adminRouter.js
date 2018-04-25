@@ -19,21 +19,28 @@
 
   router.route('/products')
     .get(isAuthenticatedAdmin, product.getAll)
-    .post(isAuthenticatedAdmin, product.create)
-    .put(isAuthenticatedAdmin, product.update);
+    .post(isAuthenticatedAdmin, product.create);
+    //.put(isAuthenticatedAdmin, product.update);
   
   router.route('/createproducts')
     .post(isAuthenticatedAdmin, product.createProduct);
 
   router.route('/products/:id')
     .get(isAuthenticatedAdmin, product.get)
+    //.put(isAuthenticatedAdmin, product.update)
     .delete(isAuthenticatedAdmin, product.delete);
 
   router.route('/products/upload/:id')
     .delete(isAuthenticatedAdmin, upload.any(), product.upload);
   
-  router.route('/variants/:productid')
+  router.route('/delete_variants/:productId')
     .put(isAuthenticatedAdmin, variant.deleteVariant);
+  
+  router.route('/add_variants/:productId')
+    .put(isAuthenticatedAdmin, variant.addVariant);
+  
+  router.route('/update_variants/:productId')
+    .put(isAuthenticatedAdmin, variant.updateVariant);
 
 
   function isAuthenticatedAdmin(req, res, next) {
