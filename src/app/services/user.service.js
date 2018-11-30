@@ -19,6 +19,7 @@
       if (!promise) {
         promise = $http.get('/api/user')
           .then(function(response) {
+            console.log("User is: ", response.data);
             deferred.resolve(response);
           }).catch(function(error) {
             deferred.reject(error);
