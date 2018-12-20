@@ -44,6 +44,11 @@
     userService.getUser()
       .then(function(response) {
         console.log("user: ", response.data.email);
+        if(!response.data.email) {
+          console.log("No user");
+          ctrl.isLoggedIn = false;
+          return;
+        }
         ctrl.isLoggedIn = true;
         ctrl.name = response.data.name;
         ctrl.email = response.data.email;
