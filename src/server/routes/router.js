@@ -26,8 +26,10 @@
   //User API's
   router.route('/user')
     .get(isAuthenticatedUser, user.getUser)
-    .put(isAuthenticatedUser, user.updateUser)
-    .post(isAuthenticatedUser, upload.any(), user.uploadAvatar);
+    .put(isAuthenticatedUser, user.updateUser);
+    
+    router.route('/user/upload')
+      .post(isAuthenticatedUser, upload.any(), user.uploadAvatar);
 
   function isAuthenticatedUser(req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];

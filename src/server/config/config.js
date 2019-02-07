@@ -1,12 +1,12 @@
 module.exports = {
-    database: {
+    /*database: {
         host: 'localhost',
         db: 'buycepsDB',
         url: 'mongodb://localhost/buycepsDB'
-    }
-  /*database: {
+    }*/
+  database: {
       host: 'ds057528.mlab.com',
       db: 'abhi',
-      url: 'mongodb://abhishek26:Abhidrock1!@ds057528.mlab.com:57528/abhi'
-    }*/
+      url: 'mongodb://abhi:Abhi123!@ds057528.mlab.com:57528/abhi'
+    }
 }

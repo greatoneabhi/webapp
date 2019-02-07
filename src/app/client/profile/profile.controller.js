@@ -23,6 +23,12 @@
 
     ctrl.save = function() {
       console.log("user: ", ctrl.user);
+      userService.updateUser(ctrl.user)
+        .then(function(response) {
+        console.log("user updated successfully");
+      }).catch(function(error) {
+        console.log("user update failed");
+      });
 
     }
     
@@ -53,7 +59,6 @@
         });
       }
       reader.readAsDataURL(element.files[0]);
-
     }
 
   }

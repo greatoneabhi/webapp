@@ -10,6 +10,7 @@
     var service = {};
 
     service.getUser = getUser;
+    service.updateUser = updateUser;
 
     return service;
 
@@ -24,6 +25,22 @@
           }).catch(function(error) {
             deferred.reject(error);
           });
+        return deferred.promise;
+      }
+      return deferred.promise;
+    }
+    
+    function updateUser(user) {
+      console.log("updating user: ", user);
+      var promise;
+      var deferred = $q.defer();
+      if (!promise) {
+        promise = $http.put('/api/user', user)
+          .then(function(response) {
+          deferred.resolve(response);
+        }).catch(function(error) {
+          deferred.reject(error);
+        });
         return deferred.promise;
       }
       return deferred.promise;

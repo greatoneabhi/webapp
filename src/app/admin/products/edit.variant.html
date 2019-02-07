@@ -4,6 +4,26 @@
   </h2>
   <hr>
   <div class="container">
+    <div class="col-sm-3">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h4 class="panel-title text-center">{{ctrl.user.name}}</h4>
+        </div>
+        <div class="panel-body">
+          <img id="profile-image" ng-src="{{ctrl.image_source}}" class="profile-image img-responsive" alt="Product Image" align="middle">
+        </div>
+        <div class="text-center">
+          <i class="fa fa-camera fa-2x" data-toggle="modal" data-backdrop="static" data-target="#uploadModal" style="color: #ec971f; cursor: pointer"></i>
+        </div>
+        <!--div class="image-upload text-center">
+            <label for="file-input">
+              <i class="fa fa-camera fa-2x" style="color: #ec971f; cursor: pointer"></i>
+            </label>
+            <input id="file-input" type="file" name="avatar" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" />
+        </div-->
+      </div>
+    </div>
+    <div class="col-sm-6">    
     <form class="form-horizontal">
       <div class="form-group">
         <label class="col-sm-3 control-label">Description:</label>
@@ -48,5 +68,33 @@
         </button>
       </div>
     </form>
+    </div>
   </div>
 </div>
+
+<!-- upload image Model -->
+<div id="uploadModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Product Picture</h4>
+      </div>
+      <form ref='uploadForm' id='uploadForm' encType="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="pid" value="{{ctrl.user._id}}" />
+          <img id="profile-image" ng-src="{{ctrl.image_source}}" class="img-responsive" alt="Product Image" style="height:50%; width:50%; margin:0 auto">
+          <label class="btn btn-default btn-file">
+          Browse<input type="file" name="avatar" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" style="display: none"/>
+        </label>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default btn-primary" data-dismiss="modal" ng-click="upload()" type="submit">Upload</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End upload end modal -->

@@ -10,6 +10,9 @@
     console.log("inside editVariantController");
     
     var ctrl = this;
+    
+    ctrl.image_source = "images/product-icon.png";
+    
     ctrl.variant = $state.params.variant;
     ctrl.productId = $state.params.productId;
     ctrl.region = {};
