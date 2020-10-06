@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = function(gulp, conf, path) {
-  return function() {
+  return function(done) {
     gulp.src([
         path.join(conf.paths.modules, 'jquery/dist/**/jquery.min.js'),
         path.join(conf.paths.modules, 'bootstrap/dist/**/*.min.js'),
@@ -27,5 +27,7 @@ module.exports = function(gulp, conf, path) {
       path.join(conf.paths.modules, 'angular-ui-grid/*.ttf')
     ])
     .pipe(gulp.dest(path.join(conf.paths.build, '/styles')));
+
+    done();
   };
 };

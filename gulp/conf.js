@@ -10,8 +10,9 @@ exports.paths = {
 exports.errorHandler = function(title) {
     'use strict';
 
-    return function(err) {
+    return function(err, done) {
         gutil.log(gutil.colors.red('[' + title+ ']'), err.toString());
         this.emit('end');
+        done();
     };
 };

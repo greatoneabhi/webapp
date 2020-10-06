@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = function(gulp, conf, path, inject) {
-    return function() {
+    return function(done) {
 
         var injectStyles = gulp.src([
             path.join(conf.paths.build, 'styles/**/*.css')
@@ -31,5 +31,7 @@ module.exports = function(gulp, conf, path, inject) {
             .pipe(inject(injectStyles, injectStyleOptions))
             .pipe(inject(injectAngularJs, injectScriptOptions))
             .pipe(gulp.dest(conf.paths.build));
+
+        done();
     };
 };
