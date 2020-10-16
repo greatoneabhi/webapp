@@ -9,7 +9,7 @@
     exports.register = function(req, res, next) {
         var newUser = new user(req.body);
         newUser.password = bcrypt.hashSync(req.body.password, 10);
-        //newUser.isAdmin = true;
+        newUser.isAdmin = true;
         user.create(newUser).then(function(user) {
             user.password = undefined;
             res.send(user);
